@@ -234,8 +234,8 @@ def mesh_objects(model_func, model_path, save_path, pcd_folder, grasp_database=T
     # Mesh the views.
     for mesh in tqdm(meshes):
         # Point cloud for this view.
-        # pc_, length, scale, centroid_diff = get_pcd(mesh, pcd_folder, object_frame=_OBJECT_FRAME, verbose=False);
-        pc_, length, scale, centroid_diff = get_real_pt_cld()
+        pc_, length, scale, centroid_diff = get_pcd(mesh, pcd_folder, object_frame=_OBJECT_FRAME, verbose=True);
+        #pc_, length, scale, centroid_diff = get_real_pt_cld()
         
         voxel_size = (2.*bound * length) / float(final_voxel_resolution)    
         if pc_ is None:

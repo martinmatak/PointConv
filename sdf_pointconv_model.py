@@ -11,7 +11,7 @@ import os
 
 config = tf.ConfigProto()
 config.gpu_options.allow_growth = True
-config.gpu_options.per_process_gpu_memory_fraction = 0.2
+config.gpu_options.per_process_gpu_memory_fraction = 0.8
 
 sys.path.append(os.environ['POINTCONV_HOME'])
 from PointConv import feature_encoding_layer
