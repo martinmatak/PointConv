@@ -9,6 +9,11 @@ import pdb
 import os
 import argparse
 
+config = tf.ConfigProto()
+config.gpu_options.allow_growth = True
+config.gpu_options.per_process_gpu_memory_fraction = 0.8
+
+
 from sdf_dataset import get_sdf_dataset, get_point_clouds, get_voxels
 from helper import get_num_trainable_variables, shuffle_in_unison, get_bn_decay, get_learning_rate
 from visualization import plot_3d_points, plot_voxel, convert_to_sparse_voxel_grid
@@ -48,7 +53,8 @@ def run(get_model, train_path, validation_path, model_path, logs_path, batch_siz
     xyz_in = tf.placeholder(tf.float32, name="query_points")
     sdf_labels = tf.placeholder(tf.float32, name="query_labels")
     is_training = tf.placeholder(tf.bool, name="is_training")
-    sdf_prediction, loss, debug = get_model(points, xyz_in, sdf_labels, is_training, bn_decay, batch_size=batch_size, alpha=alpha, loss_function=loss_function)
+    #sdf_prediction, loss, debug = get_model(points, xyz_in, sdf_labels, is_training, bn_decay, batch_size=batch_size, alpha=alpha, loss_feature=loss_function)
+    sdf_prediction, loss, debug = get_model(points, xyz_in, sdf_labels, is_training, bn_decay, batch_size=batch_size, loss_feature=loss_function)
 
     # Get update ops for the BN.
     update_ops = tf.get_collection(tf.GraphKeys.UPDATE_OPS)
@@ -68,7 +74,7 @@ def run(get_model, train_path, validation_path, model_path, logs_path, batch_siz
     # Save/Restore model.
     saver = tf.train.Saver()
 
-    with tf.Session() as sess:
+    with tf.Session(config=config) as sess:
 
         # Setup tensorboard.
         f_writer = tf.summary.FileWriter(logs_path, sess.graph)

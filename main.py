@@ -8,7 +8,7 @@ from sdf_pointconv_model import get_pointconv_model
 from voxel_cnn_model import get_voxel_cnn_model
 
 # Get running function.
-from run_sdf_model import run_sdf
+from run_sdf_model import run as run_sdf
 from run_voxel_model import run_voxel
 from mise import mesh_objects
 

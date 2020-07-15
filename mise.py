@@ -17,9 +17,9 @@ from sdf_pointconv_model import get_pointconv_model, get_sdf_model, get_embeddin
 from visualization import plot_3d_points, plot_voxel, convert_to_sparse_voxel_grid, visualize_points_overlay
 from sdf_dataset import get_sdf_dataset, get_pcd
 
-from embedding import cloud_embedding
+#from embedding import cloud_embedding
 
-sys.path.append('/home/markvandermerwe/catkin_ws/src/ll4ma_3d_reconstruction/src/data_generation/')
+sys.path.append('/home/mmatak/workspace/catkin_ws/src/ll4ma_3d_reconstruction/src/data_generation/')
 from generate_view_splits import get_view_splits
 
 _MODEL_FUNC = get_pointconv_model
