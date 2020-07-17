@@ -106,7 +106,7 @@ def get_pcd(view, pcd_database, object_frame=False, verbose=False, unscaled=Fals
         return None
     return get_processed_pcd(point_cloud, object_frame, verbose, unscaled)
 
-def get_processed_pcd(point_cloud, object_frame=False, verbose=False, unscaled=False)
+def get_processed_pcd(point_cloud, object_frame=False, verbose=False, unscaled=False):
     # Point cloud size.
     # print("PC Size: ", len(point_cloud.pc_data))
     
