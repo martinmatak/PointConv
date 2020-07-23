@@ -9,7 +9,8 @@ import pdb
 #import mcubes
 import os
 
-config = tf.ConfigProto()
+#config = tf.ConfigProto()
+config = tf.compat.v1.ConfigProto()
 config.gpu_options.allow_growth = True
 config.gpu_options.per_process_gpu_memory_fraction = 0.8
 
