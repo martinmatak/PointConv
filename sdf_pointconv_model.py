@@ -30,6 +30,7 @@ def get_pointconv_model(points, xyz, sdf_label, is_training, bn_decay, batch_siz
     xyz_in = tf.reshape(xyz, shape=(batch_size, -1, 3))
     sdf_label = tf.reshape(sdf_label, shape=(batch_size, -1, 1)) # This is important.
 
+    print("line 33")
     with tf.variable_scope('points_embedding'):
 
         # Embed our input points to some 256 vector.
@@ -38,7 +39,8 @@ def get_pointconv_model(points, xyz, sdf_label, is_training, bn_decay, batch_siz
 
         pts_embedding = tf.layers.Dense(256, activation=tf.nn.relu, use_bias=True)(l1_pts)
         pts_embedding = tf.layers.dropout(pts_embedding, rate=0.2, training=is_training)
-    
+   
+    print("line 43")
     with tf.variable_scope('encoder'):
 
         # Encode w/ PointConv Layers.
@@ -55,6 +57,7 @@ def get_pointconv_model(points, xyz, sdf_label, is_training, bn_decay, batch_siz
         cloud_embedding = tf.layers.batch_normalization(cloud_embedding, training=is_training)
         cloud_embedding = tf.nn.relu(cloud_embedding)
 
+    print("line 60")
     with tf.variable_scope('sdf'):
 
         # Combine embeddings. First reshape cloud embeddings to concat with each pt embedding.

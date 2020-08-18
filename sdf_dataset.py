@@ -15,7 +15,7 @@ from pypcd import pypcd
 
 # from visualization import plot_3d_points, visualize_points_overlay
 
-sys.path.append('/home/mmatak/workspace/catkin_ws/src/ll4ma_3d_reconstruction/src/data_generation/')
+sys.path.append('/home/mmatak/catkin_ws/src/ll4ma_3d_reconstruction/src/data_generation/')
 from object_cloud import process_object_cloud
 # from object_frame import find_object_frame
 

@@ -20,7 +20,7 @@ We embed input point clouds using 4 PointConv embedding layers [1]. Query points
 ### Dependencies:
 
 Our code depends on the following python libraries:
-1. Tensorflow (>=1.9.0)
+1. Tensorflow (>=1.9.0, for PointConv linked: <= 1.13.1)
 2. numpy
 3. mcubes
 4. trimesh
